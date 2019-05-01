@@ -1,0 +1,4 @@
+.bootnode/
+.ethash/
+.ether-*
+genesis.json
