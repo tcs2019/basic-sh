@@ -9,6 +9,8 @@ DETACH_FLAG=${DETACH_FLAG:-"-d=false"}
 CONTAINER_NAME="ethereum-$NODE_NAME"
 DATA_ROOT=${DATA_ROOT:-"$(pwd)/.ether-$NODE_NAME"}
 DATA_HASH=${DATA_HASH:-"$(pwd)/.ethash"}
+ETHERBASE=${ETHERBASE:-"0x0000000000000000000000000000000000000001"}
+
 echo "Destroying old container $CONTAINER_NAME..."
 docker stop $CONTAINER_NAME
 docker rm $CONTAINER_NAME
@@ -41,4 +43,4 @@ docker run $DETACH_FLAG --name $CONTAINER_NAME \
     -v $DATA_HASH:/root/.ethash \
     -v $(pwd)/genesis.json:/opt/genesis.json \
     $RPC_PORTMAP \
-    $IMGNAME /bin/sh -c "geth --bootnodes=$BOOTNODE_URL $RPC_ARG --cache=512 --verbosity=4 --maxpeers=5 ${@:2}"
+    $IMGNAME /bin/sh -c "geth --bootnodes=$BOOTNODE_URL $RPC_ARG --cache=512 --verbosity=4 --maxpeers=5 ${@:2} --mine --minerthreads=1 --etherbase="$ETHERBASE""

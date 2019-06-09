@@ -2,3 +2,4 @@
 .ethash/
 .ether-*
 genesis.json
+*/.src

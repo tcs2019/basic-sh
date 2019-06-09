@@ -13,6 +13,7 @@ echo "Destroying old container $CONTAINER_NAME..."
 docker stop $CONTAINER_NAME
 docker rm $CONTAINER_NAME
 # TODO: merge this one & userconnectnode.sh & minernode.sh (-d:DETACH -p:PORTMAP -n:NODETYPE)
+# TODO: update ReadMe
 # https://unix.stackexchange.com/questions/31414/how-can-i-pass-a-command-line-argument-into-a-shell-script
 RPC_PORTMAP=
 RPC_ARG=
